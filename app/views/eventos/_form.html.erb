@@ -1,0 +1,34 @@
+<% form_for (@evento), :html => { :multipart => true } do |f| %>
+  <% if @evento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evento.errors.count, "error") %> prohibited this evento from being saved:</h2>
+
+      <ul>
+      <% @evento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'titulo' %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label 'Descricao' %><br />
+    <%= f.text_area :descricaoevento, :rows => 10, :cols => 70%>
+	<%= f.file_field :fotoevento1 %><br />
+	<%= f.file_field :fotoevento2 %><br />
+	<%= f.file_field :fotoevento3 %><br />
+	<%= f.file_field :fotoevento4 %><br />
+	<%= f.file_field :fotoevento5 %><br />
+	<%= f.file_field :fotoevento6 %><br />
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

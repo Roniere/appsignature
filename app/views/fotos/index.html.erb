@@ -1,0 +1,29 @@
+<h1 class="fotos">Fotos Signature</h1>
+	
+<h2><%= link_to 'Nova Foto', new_foto_path %></h2>
+	
+<table border="2" width="100%" class="fotos">
+
+	<% @fotos.each do |foto| %>
+		<tr>
+				<td class="fotos" rowspan="3">FOTO</td>
+		</tr>
+		<tr>	
+			<h2 class="fotos">
+				<td class="fotos"><h2 class="fotos"><%= link_to foto.nomefoto, foto %></h2></td>
+			</h2>
+		</tr>
+		<tr>
+				<td class="fotos"><%= foto.comentario %></td>
+		</tr>
+			<td colspan="3" class="fotos">
+				<%= link_to 'Editar', edit_foto_path(foto) %>
+				<%= link_to 'Excluir', foto, :confirm => 'Tem Certeza?', :method => :delete %>
+			</td>
+		</tr>
+<% end %>
+</table>
+
+<br />
+
+

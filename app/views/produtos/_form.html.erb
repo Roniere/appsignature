@@ -1,0 +1,32 @@
+﻿<!--<%= form_for(@produto) do |f| %>-->
+<% form_for (@produto), :html => { :multipart => true } do |f| %>
+  <% if @produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+
+      <ul>
+      <% @produto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Nome' %><br />
+    <%= f.text_field :nomeproduto %>
+  </div>
+  <div class="field">
+
+	<%= f.label 'Fotos' %><br />
+  <%= f.file_field :foto1 %><br />
+  <%= f.file_field :foto2 %><br />
+  <%= f.file_field :foto3 %><br />
+    <%= f.label :descricao %><br />
+    <%= f.text_area :descricao, :class => "mceEditor"%><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% end %>

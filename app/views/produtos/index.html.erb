@@ -1,0 +1,37 @@
+﻿<h1 class="produtos">Produtos Signature</h1>
+
+<h2><%= link_to 'Novo Produto', new_produto_path %></h2>
+
+	<table border="2" width="100%" >
+    
+		<% @produtos.each do |produto| %>
+			<tr>
+				<td colspan="2" class="produtos">
+						<h2 class="produtos">
+								<%= link_to raw(produto.nomeproduto), produto %>
+						</h2>
+				</td>
+			
+			</tr>
+			<tr>
+				<td rowspan="3" class="produtos">
+					
+						<%= link_to image_tag(produto.foto1(:medium)), produto%>
+						
+				</td>
+			
+			</tr>
+				<td class="produtos">
+								<%= raw(produto.descricao) %>
+				</td>
+			</tr>
+				<td colspan="2"  class="produtos">			
+				<%= link_to 'Editar', edit_produto_path(produto) %>
+				<%= link_to 'Excluir', produto, :confirm => 'Tem certeza?', :method => :delete %></td>
+			</tr>
+		<% end %>
+	</table>
+
+<br />
+
+

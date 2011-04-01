@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<h1>Evento</h1>
+<p>
+  <b>Titulo:</b>
+  <%= @evento.title %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @evento.descricaoevento %>
+</p>
+<p>
+<%= image_tag @evento.fotoevento1.url(:grande) %><br/>
+<%= image_tag @evento.fotoevento2.url(:grande) %><br/>
+<%= image_tag @evento.fotoevento3.url(:grande) %><br/>
+<%= image_tag @evento.fotoevento4.url(:grande) %><br/>
+<%= image_tag @evento.fotoevento5.url(:grande) %><br/>
+<%= image_tag @evento.fotoevento6.url(:grande) %><br/>
+
+</p>
+
+
+<%= link_to 'Editar', edit_evento_path(@evento) %> |
+<%= link_to 'Voltar', eventos_path %>

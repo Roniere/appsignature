@@ -11,6 +11,17 @@ ol, ul{
   line-height: 18px;
 
 }
+div.user{
+	text-align: justify;
+	font-family: Myriad Pro;
+	text-align: right;
+	margin-right: 60px;
+}
+div.user a:link{
+	text-decoration: underline; 
+	
+
+}
 table.eventos{
 	width: 100%;
 }
@@ -68,13 +79,36 @@ table.produtos{
 	width: 100%;
 }
 td.produtos{
-	width: 50%;
+	width: 70%;
+}
+td.produtosfoto{
+	width: none;
+}
+td.produtosfoto a:hover{
+	border-color: #ffffff;
+	width: none;
+	background: #FFFF00;
 }
 h2.produtos{
  text-align: center;
  color: #ffffff;
 }
 h1.produtos{
+  text-align: center;
+  color: #ffffff;
+}
+table.videos{
+	width: 100%;
+}
+td.videos{
+	width: 100%;
+	 text-align: center;
+}
+h3.videos{
+ text-align: center;
+ color: #ffffff;
+}
+h1.videos{
   text-align: center;
   color: #ffffff;
 }
@@ -152,11 +186,10 @@ font-family: Myriad Pro;
 
 
    div.testefundo{ 
-		position: both;
 		color: red;
 		Width: 739;
 		border: 5px;
-		height: 1600px;			
+		height: both;			
 		background: transparent url(/images/site-final_29.gif) no-repeat;
 	
    }
@@ -168,11 +201,21 @@ font-family: Myriad Pro;
 		font-family: Myriad Pro;
    }
    p.geral{
-		font-size: 25px;
+		font-size: 15px;
+		font-style: bold; 
+		color: #FFFFFF;
+		cursor:pointer; 
+
+   }
+   p.principal{
+			font-size: 15px;
 		font-style: bold; 
 		color: #FFFFFF;
 		 cursor:pointer; 
-
+   }
+   h2.principal{
+   
+   
    }
 
 

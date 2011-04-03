@@ -1,7 +1,7 @@
 <h1 class="fotos">Fotos Signature</h1>
-	
+<% if can? :new, @fotos%>
 <h2><%= link_to 'Nova Foto', new_foto_path %></h2>
-	
+<% end %>
 <table border="2" width="100%" class="fotos">
 
 	<% @fotos.each do |foto| %>
@@ -17,11 +17,20 @@
 				<td class="fotos"><%= foto.comentario %></td>
 		</tr>
 			<td colspan="3" class="fotos">
+			<% if can? :update, @fotos%>
 				<%= link_to 'Editar', edit_foto_path(foto) %>
+			<% end %>
+			<% if can? :destroy, @fotos%>
 				<%= link_to 'Excluir', foto, :confirm => 'Tem Certeza?', :method => :delete %>
+			<% end %>
 			</td>
 		</tr>
 <% end %>
+<tr> 
+			<td class="produtospaginate">
+				<%= will_paginate @fotos %>
+			</td>
+		</tr>
 </table>
 
 <br />

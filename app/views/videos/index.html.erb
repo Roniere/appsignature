@@ -1,23 +1,39 @@
-<h1>Videos</h1>
+<h1 class="videos">Videos</h1>
 
-<h2><%= link_to 'Novo Video', new_video_path %></h2>
-	<table border="2" width="100%">
+<% if can? :new, @videos%>
+	<h2 class="videos">
+		<%= link_to 'Novo Video', new_video_path %>
+	</h2>
+<% end %>
+
+	<table border="0" width="100%" class="videos">
 		<% @videos.each do |video| %>
 			<tr >
-				<td rowspan="4">video</td>
+				<td class="videos">
+					<h3 class="videos"">
+						<%= video.nomevideo %>
+						<%= raw(video.descricaovideo) %>
+					</h3>
+				</td>						
+			</tr>		
+			<tr>			
+				<td class="videos">
+					<% if can? :update, @videos%>
+						<%= link_to 'Editar', edit_video_path(video) %>
+					<% end %>
+					<% if can? :destroy, @videos%>
+						<%= link_to 'Excluir', video, :confirm => 'Tem certeza?', :method => :delete %>
+					<% end %>
+					<hr>
+				</td>
 			</tr>
-			<tr>
-				<td><%= link_to video.nomevideo, video%></td>
-			</tr>
-			<tr>
-				<td><%= video.descricaovideo %></td>
-			</tr>
-			<tr>
-				<td><%= %>
-				<%= link_to 'Editar', edit_video_path(video) %>
-				<%= link_to 'Excluir', video, :confirm => 'Tem certeza?', :method => :delete %></td>
-			</tr>
+		
 		<% end %>
+		<tr> 
+			<td class="produtospaginate">
+				<%= will_paginate @videos %>
+			</td>
+		</tr>
 	</table>
 
 <br />

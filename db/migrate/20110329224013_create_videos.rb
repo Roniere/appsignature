@@ -4,6 +4,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :nomevideo
       t.text :descricaovideo
 
+
       t.timestamps
     end
   end

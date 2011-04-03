@@ -1,9 +1,10 @@
 class NoticiasController < ApplicationController
   # GET /noticias
   # GET /noticias.xml
+  load_and_authorize_resource :only => [:new, :edit, :update, :destroy]
   def index
-    @noticias = Noticia.all
-
+    #@noticias = Noticia.all
+    @noticias	= Noticia.paginate :page => params[:page], :order => 'created_at ASC'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @noticias }
@@ -24,7 +25,7 @@ class NoticiasController < ApplicationController
   # GET /noticias/new
   # GET /noticias/new.xml
   def new
-    @noticia = Noticia.new
+    #@noticia = Noticia.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,7 +35,7 @@ class NoticiasController < ApplicationController
 
   # GET /noticias/1/edit
   def edit
-    @noticia = Noticia.find(params[:id])
+   # @noticia = Noticia.find(params[:id])
   end
 
   # POST /noticias
@@ -56,7 +57,7 @@ class NoticiasController < ApplicationController
   # PUT /noticias/1
   # PUT /noticias/1.xml
   def update
-    @noticia = Noticia.find(params[:id])
+    #@noticia = Noticia.find(params[:id])
 
     respond_to do |format|
       if @noticia.update_attributes(params[:noticia])
@@ -72,7 +73,7 @@ class NoticiasController < ApplicationController
   # DELETE /noticias/1
   # DELETE /noticias/1.xml
   def destroy
-    @noticia = Noticia.find(params[:id])
+    #@noticia = Noticia.find(params[:id])
     @noticia.destroy
 
     respond_to do |format|

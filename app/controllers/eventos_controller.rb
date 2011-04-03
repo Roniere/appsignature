@@ -1,9 +1,18 @@
 class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.xml
+  load_and_authorize_resource :only => [:new, :edit, :update, :destroy]
+   
+ uses_tiny_mce :options => {
+                              :theme => 'advanced',
+                              :theme_advanced_resizing => true,
+                              :theme_advanced_resize_horizontal => false,
+                              :plugins => %w{ table fullscreen }
+                            }
+  
   def index
-    @eventos = Evento.all
-
+    #@eventos = Evento.all
+	@eventos = Evento.paginate :page => params[:page], :order => 'created_at ASC'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @eventos }
@@ -24,7 +33,7 @@ class EventosController < ApplicationController
   # GET /eventos/new
   # GET /eventos/new.xml
   def new
-    @evento = Evento.new
+   # @evento = Evento.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,7 +43,7 @@ class EventosController < ApplicationController
 
   # GET /eventos/1/edit
   def edit
-    @evento = Evento.find(params[:id])
+    #@evento = Evento.find(params[:id])
   end
 
   # POST /eventos
@@ -56,7 +65,7 @@ class EventosController < ApplicationController
   # PUT /eventos/1
   # PUT /eventos/1.xml
   def update
-    @evento = Evento.find(params[:id])
+   # @evento = Evento.find(params[:id])
 
     respond_to do |format|
       if @evento.update_attributes(params[:evento])
@@ -72,7 +81,7 @@ class EventosController < ApplicationController
   # DELETE /eventos/1
   # DELETE /eventos/1.xml
   def destroy
-    @evento = Evento.find(params[:id])
+   # @evento = Evento.find(params[:id])
     @evento.destroy
 
     respond_to do |format|

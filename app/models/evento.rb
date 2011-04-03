@@ -1,4 +1,6 @@
 class Evento < ActiveRecord::Base
+	cattr_reader :per_page
+	@@per_page = 10
 	belongs_to :principal
 	
 	has_attached_file :fotoevento1, :styles => { :medium => "300x300>", :thumb => "100x100>", :grande => "500x500>" }

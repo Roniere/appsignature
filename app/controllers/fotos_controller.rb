@@ -1,9 +1,10 @@
 class FotosController < ApplicationController
   # GET /fotos
   # GET /fotos.xml
+  load_and_authorize_resource :only => [:new, :edit, :update, :destroy]
   def index
-    @fotos = Foto.all
-
+   # @fotos = Foto.all
+    @fotos = Foto.paginate :page => params[:page], :order => 'created_at ASC'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @fotos }
@@ -24,7 +25,7 @@ class FotosController < ApplicationController
   # GET /fotos/new
   # GET /fotos/new.xml
   def new
-    @foto = Foto.new
+   # @foto = Foto.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,7 +35,7 @@ class FotosController < ApplicationController
 
   # GET /fotos/1/edit
   def edit
-    @foto = Foto.find(params[:id])
+    #@foto = Foto.find(params[:id])
   end
 
   # POST /fotos
@@ -56,7 +57,7 @@ class FotosController < ApplicationController
   # PUT /fotos/1
   # PUT /fotos/1.xml
   def update
-    @foto = Foto.find(params[:id])
+    #@foto = Foto.find(params[:id])
 
     respond_to do |format|
       if @foto.update_attributes(params[:foto])
@@ -72,7 +73,7 @@ class FotosController < ApplicationController
   # DELETE /fotos/1
   # DELETE /fotos/1.xml
   def destroy
-    @foto = Foto.find(params[:id])
+    #@foto = Foto.find(params[:id])
     @foto.destroy
 
     respond_to do |format|

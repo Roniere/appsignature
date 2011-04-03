@@ -1,6 +1,7 @@
 <h1 class="noticias">Not&iacutecias Signature</h1>
-
-<h2><%= link_to 'Nova Noticia', new_noticia_path %></h2>
+<% if can? :new, @noticias%>
+	<h2><%= link_to 'Nova Noticia', new_noticia_path %></h2>
+<% end %>
 
 	<table border="2" width="100%" class="noticias">
 		<% @noticias.each do |noticia| %>
@@ -12,10 +13,20 @@
 			</tr>
 		
 			<tr>
-				<td colspan="3" class="noticias"><%= link_to 'Editar', edit_noticia_path(noticia) %>
-				<%= link_to 'Deletar', noticia, :confirm => 'Tem certeza?', :method => :delete %></td>
+				<td colspan="3" class="noticias">
+				<% if can? :update, @noticias%>
+					<%= link_to 'Editar', edit_noticia_path(noticia) %>
+				<% end %>
+				<% if can? :destroy, @noticias%>
+					<%= link_to 'Deletar', noticia, :confirm => 'Tem certeza?', :method => :delete %></td>
+				<% end %>
 			</tr>
 		<% end %>
+		<tr> 
+			<td class="produtospaginate">
+				<%= will_paginate @noticias %>
+			</td>
+		</tr>
 	</table>
 
 <br />

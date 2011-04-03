@@ -13,11 +13,13 @@
 
   <div class="field">
     <%= f.label 'titulo' %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title%>
   </div>
   <div class="field">
     <%= f.label 'Descricao' %><br />
-    <%= f.text_area :descricaoevento, :rows => 10, :cols => 70%>
+	
+    <%= f.text_area :descricaoevento,   :class => "mceEditor"%>
+	
 	<%= f.file_field :fotoevento1 %><br />
 	<%= f.file_field :fotoevento2 %><br />
 	<%= f.file_field :fotoevento3 %><br />

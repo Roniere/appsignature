@@ -1,6 +1,8 @@
 ﻿class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.xml
+load_and_authorize_resource :only => [:new, :edit, :update, :destroy]
+ 
  uses_tiny_mce :options => {
                               :theme => 'advanced',
                               :theme_advanced_resizing => true,
@@ -8,8 +10,11 @@
                               :plugins => %w{ table fullscreen }
                             }
   def index
-    @produtos = Produto.all
-
+    @produtos = Produto.paginate :page => params[:page], :order => 'created_at ASC'
+	#@produtos = Produto.all
+	#@produtos = Produto.paginate :page => params[:page], :order => 'created_at DESC'
+	#@produtos = Produto.paginate(:page => params[:page])
+	
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @produtos }
@@ -30,7 +35,7 @@
   # GET /produtos/new
   # GET /produtos/new.xml
   def new
-    @produto = Produto.new
+   # @produto = Produto.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +45,7 @@
 
   # GET /produtos/1/edit
   def edit
-    @produto = Produto.find(params[:id])
+    #@produto = Produto.find(params[:id])
   end
 
   # POST /produtos
@@ -62,7 +67,7 @@
   # PUT /produtos/1
   # PUT /produtos/1.xml
   def update
-    @produto = Produto.find(params[:id])
+   # @produto = Produto.find(params[:id])
 
     respond_to do |format|
       if @produto.update_attributes(params[:produto])
@@ -78,7 +83,7 @@
   # DELETE /produtos/1
   # DELETE /produtos/1.xml
   def destroy
-    @produto = Produto.find(params[:id])
+    #@produto = Produto.find(params[:id])
     @produto.destroy
 
     respond_to do |format|

@@ -1,4 +1,6 @@
 Appsignature::Application.routes.draw do
+  devise_for :users
+
   get "principal/index"
 
   get "principal/empresa"

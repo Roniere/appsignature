@@ -12,13 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nomevideo %><br />
+    <%= f.label "Nome do Video" %><br />
     <%= f.text_field :nomevideo %>
   </div>
   <div class="field">
-    <%= f.label :descricaovideo %><br />
-    <%= f.text_area :descricaovideo %>
+    <%= f.label "video" %><br />
+    <%= f.text_area :descricaovideo,:class => "mceEditor", :rows => 7%>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

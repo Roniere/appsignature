@@ -1,9 +1,21 @@
 class VideosController < ApplicationController
   # GET /videos
   # GET /videos.xml
-  def index
-    @videos = Video.all
+  load_and_authorize_resource :only => [:new, :edit, :update, :destroy]
+   uses_tiny_mce :options => {
+                              :theme => 'advanced',
+                              :theme_advanced_resizing => true,
+							  :theme_advanced_resize_horizontal => false,
+                              :plugins => %w{ table fullscreen }
 
+                            }
+							
+
+
+
+  def index
+    #@videos = Video.all
+    @videos = Video.paginate :page => params[:page], :order => 'created_at ASC'
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @videos }
@@ -24,7 +36,7 @@ class VideosController < ApplicationController
   # GET /videos/new
   # GET /videos/new.xml
   def new
-    @video = Video.new
+    #@video = Video.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,7 +46,7 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
-    @video = Video.find(params[:id])
+    #@video = Video.find(params[:id])
   end
 
   # POST /videos
@@ -44,7 +56,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to(@video, :notice => 'Video was successfully created.') }
+        format.html { redirect_to(@video, :notice => 'Video criado com sucesso.') }
         format.xml  { render :xml => @video, :status => :created, :location => @video }
       else
         format.html { render :action => "new" }
@@ -56,11 +68,11 @@ class VideosController < ApplicationController
   # PUT /videos/1
   # PUT /videos/1.xml
   def update
-    @video = Video.find(params[:id])
+    #@video = Video.find(params[:id])
 
     respond_to do |format|
       if @video.update_attributes(params[:video])
-        format.html { redirect_to(@video, :notice => 'Video was successfully updated.') }
+        format.html { redirect_to(@video, :notice => 'Video atualizado com sucesso.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,7 +84,7 @@ class VideosController < ApplicationController
   # DELETE /videos/1
   # DELETE /videos/1.xml
   def destroy
-    @video = Video.find(params[:id])
+    #@video = Video.find(params[:id])
     @video.destroy
 
     respond_to do |format|

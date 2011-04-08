@@ -1,4 +1,5 @@
 ﻿class ProdutosController < ApplicationController
+	layout 'principal'
   # GET /produtos
   # GET /produtos.xml
 load_and_authorize_resource :only => [:new, :edit, :update, :destroy]

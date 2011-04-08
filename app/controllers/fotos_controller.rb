@@ -1,4 +1,5 @@
 class FotosController < ApplicationController
+	layout 'principal'
   # GET /fotos
   # GET /fotos.xml
   load_and_authorize_resource :only => [:new, :edit, :update, :destroy]

@@ -1,7 +1,9 @@
 ﻿class PrincipalController < ApplicationController
+	layout 'principal'
   def index 
-	@principals = Produto.all
-	   respond_to do |format|
+	@produtos = Produto.all
+	
+	respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @produtos }
     end

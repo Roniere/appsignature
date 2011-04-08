@@ -1,9 +1,9 @@
-<h1 class="noticias">Not&iacutecias Signature</h1>
+<h1 class="titulo">Not&iacutecias Signature</h1>
 <% if can? :new, @noticias%>
-	<h2><%= link_to 'Nova Noticia', new_noticia_path %></h2>
+	<h2><%= link_to image_tag('novo.png'), new_noticia_path %></h2>
 <% end %>
 
-	<table border="2" width="100%" class="noticias">
+	<table border="0" width="100%" class="noticias">
 		<% @noticias.each do |noticia| %>
 			<tr>
 				<td class="noticias"><h2 class="noticias"><%= link_to noticia.title, noticia %></h2></td>
@@ -15,10 +15,10 @@
 			<tr>
 				<td colspan="3" class="noticias">
 				<% if can? :update, @noticias%>
-					<%= link_to 'Editar', edit_noticia_path(noticia) %>
+					<%= link_to image_tag('editar.png'), edit_noticia_path(noticia) %>
 				<% end %>
 				<% if can? :destroy, @noticias%>
-					<%= link_to 'Deletar', noticia, :confirm => 'Tem certeza?', :method => :delete %></td>
+					<%= link_to image_tag('excluir.png'), noticia, :confirm => 'Tem certeza?', :method => :delete %></td>
 				<% end %>
 			</tr>
 		<% end %>

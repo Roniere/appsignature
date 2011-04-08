@@ -80,6 +80,8 @@ GEM
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
+    will_paginate_renderers (0.0.1)
+      will_paginate (= 3.0.pre2)
 
 PLATFORMS
   x86-mingw32
@@ -93,3 +95,4 @@ DEPENDENCIES
   sqlite3-ruby
   tiny_mce
   will_paginate (~> 3.0.pre2)
+  will_paginate_renderers

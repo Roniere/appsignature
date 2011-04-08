@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+	layout 'principal'
   # GET /videos
   # GET /videos.xml
   load_and_authorize_resource :only => [:new, :edit, :update, :destroy]

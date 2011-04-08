@@ -7,81 +7,86 @@
   
   <%= stylesheet_link_tag 'scaffold'%>
   <%= javascript_include_tag :defaults%>
-
+ 
   <%= csrf_meta_tag %> 
 
 		
 </head>
 <body>
-		
+	<p class="notice">
+			<%= notice %>
+			<%= alert %>
+	</p>	
+			
 <table id="Table_01" width="1000" height="both"  align="center"  border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td colspan="22" width="1000" height="41">
 		</td>	
 	</tr>
 	<tr>
-			<p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
+		
 			
-		<td colspan="22" width="1000" height="23">
-			<%= image_tag "site-final_02.gif",:alt => ""%>
-		<div class="user">	
+		<td class= "" colspan="22" >
 			
-			<% if user_signed_in?%>
-				Usuario:  <%= current_user.email %><br />
-				<%= link_to "Sair", destroy_user_session_path%>
-			<% else %>
-				<%= link_to "Entrar", new_user_session_path%>
-			<%end%>	
-		</div>
+		
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2" rowspan="4" width="141" height="186"></td>
 			<td colspan="4" rowspan="4" width="228" height="186">
-				<%= link_to (image_tag("site-final_04.gif")), root_path%>
-				
+							
 			</td>
-		<td colspan="2" rowspan="4" width="129" height="186">
+		<td colspan="2" rowspan="4" width="129" height="186">	
 		</td>
-		<td colspan="13" width="501" height="36">
+		<td colspan="13" width="501" height="36">	
 		</td>
 		<td rowspan="6" width="1" height="18">
 		</td>
 	</tr>
-<!---MARCAS--->
+
 	<tr>
 
 		<td colspan="3" width="85" height="37" class="imgcab" >
-			<%= image_tag "site-final_08.gif",:alt => ""%>
+			<%= link_to (image_tag("img_login.gif")), root_path%>
+				<div class="user">	
+			<br />
+				<% if user_signed_in?%>
+					Usuario:  <%= current_user.email %><br />
+								<%= link_to "Sair", destroy_user_session_path%>
+				<% else %>
+					<% if can? :create, @users%>
+								<%= link_to "Entrar", new_user_session_path%>
+					<% end %>
+				<%end%>	
+			</div>
 		</td>
 		<td colspan="3" width="89" height="37" class="imgcab" >
-			<%= image_tag "site-final_09.gif",:alt => ""%>
+			
 		</td>
 		<td colspan="3" width="135" height="37" class="imgcab">
-			<%= image_tag "site-final_10.gif",:alt => ""%>
+			
 		</td>
 		<td colspan="3"  width="98" height="37" class="imgcab">
-			<%= image_tag "site-final_11.gif",:alt => ""%>
+			
 		</td>
 		<td rowspan="2" width="94" height="77">
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2"  width="66" height="40" class="imgcab" >
-			<!---<%= image_tag "site-final_13.gif",:alt => ""%>-->
+			
 		</td>
 		<td colspan="3" width="104" height="40" class="imgcab">
-			<%= image_tag "site-final_14.gif",:alt => ""%>
+			
 		</td>
 		<td colspan="2" width="93" height="40" class="imgcab">
-			<%= image_tag "site-final_15.gif",:alt => ""%>
+			
 		</td>
 		<td colspan="3" width="92" height="40" class="imgcab">
-			<%= image_tag "site-final_16.gif",:alt => ""%>
+			
 		</td>
 		<td colspan="2" width="52" height="40" class="imgcab">
-			<!---<%= image_tag "site-final_17.gif",:alt => ""%>-->
+			
 		</td>
 	</tr>
 <!---FIM MARCAS--->
@@ -91,49 +96,45 @@
 		</td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="102" height="10">
-		
+		<td rowspan="2" width="102" height="10">		
 		</td>
-		<td colspan="2" width="97" height="31" class="img1">
-		<a href="http://localhost:3000/principal">
-			<%= image_tag "site-final_20.gif"%>
-		</a>
+
+		<td colspan="2" width="97" height="31" >
+									
+							
 		</td>
 		<td width="115" height="31" class="img2" > 
-			<a href="http://localhost:3000/marcas">
-				<%= image_tag "site-final_21.gif",:alt => ""%>
-			</a>
+			
+			
 		</td>
 		<td width="1" height="31">
-			<%= image_tag "site-final_22.gif",:alt => ""%>
+				
 		</td>
 		<td colspan="2" width="129" height="31" class="img3">
-			
-			<%= link_to (image_tag("site-final_23.gif")), produtos_path%>
+		
+				
+		
 			
 		</td>
 		<td colspan="2" class="img4" width="99" height="31">
 		
-				<%= link_to (image_tag("site-final_24.gif")), videos_path%>
-		
+				<font size="20px">Login</font>
 				
 		</td>
 		<td colspan="3" class="img5" width="119" height="31">
 			
-				<%= link_to (image_tag("site-final_25.gif")), eventos_path%>
 			
 		</td>
 		<td colspan="4" class="img6" width="118" height="31">
-			
-				<%= link_to (image_tag("site-final_26.gif")), noticias_path%>
-			
+				
 		</td>
 		<td colspan="3" class="img7" width="118" height="31">
-		<a href="http://localhost:3000/contatos">
-			<%= image_tag "site-final_27.gif",:alt => ""%>
-		</a>
+			
+	
 		</td>
+
 		<td colspan="2" rowspan="2" width="101" height="1">
+		
 		</td>
 	<tr>
 
@@ -143,11 +144,17 @@
 				
 <!---FIM FLASH	--->
 				<div class="geral">	
-			
+					<ul class="menu_body">
+							<a href="#"><li>Loja Signature</li></a>
+							<a href="#"><li>História</li></a>
+							<a href="#"><li>Estrutura e Localização</li></a>
+					</ul>	
 
 <!---CORPO DAS VIEWS-->
-		
-					<%= yield %>
+		         <table align="center">
+					 <tr><td> <%= yield %></td></tr>
+				</table>
+
 				
 <!---FIM CORPO DAS VIEWS-->
 			
@@ -159,10 +166,7 @@
 	</tr>
 	<tr>
 		<td colspan="22" class="rodape" >
-				<br/>
-				<br/>
-				<br/>
-				<br/>
+			
 		</td>
 	</tr>
 	
@@ -192,15 +196,7 @@
 	</tr>
 </table>
   
-  <script type="text/javascript">
- 
-	$(document).ready(function(){
-		$(".submenu").hide();
-	
-			$(".img1, .img2, .img3, .img4, .img5, .img6, .img7").hide(0).delay(1000).show(300).fadeIn(100).slideDown(500);
-		});
 
-   </script>
 
 
 </body>

@@ -1,4 +1,5 @@
 class NoticiasController < ApplicationController
+	layout 'principal'
   # GET /noticias
   # GET /noticias.xml
   load_and_authorize_resource :only => [:new, :edit, :update, :destroy]

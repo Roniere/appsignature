@@ -1,8 +1,10 @@
-﻿<h1 class="produtos">Produtos Signature</h1>
+﻿<h1 class="titulo"><b>Produtos</b></h1>
 
 
 <% if can? :new, @produtos%>
-		<h2><%= link_to 'Novo Produto', new_produto_path %></h2>
+		<p class="produtoslink">
+			  <%= link_to image_tag('novo.png'), new_produto_path %>
+		</p>
 <% end %>
 
 	<table border="0" width="100%" >
@@ -12,13 +14,12 @@
 				<td colspan="2" class="produtos">
 						<h2 class="produtos">
 						<hr>
-								<%= link_to raw(produto.nomeproduto), produto %>
-						</h2>
-				</td>
-			
+							<%= link_to raw(produto.nomeproduto), produto %>
+						</h3>
+				</td>			
 			</tr>
 			<tr>
-				<td rowspan="3" class="produtosfoto">
+				<td rowspan="2" class="produtosfoto">
 					
 						<%= link_to image_tag(produto.foto1(:medium)), produto%>
 						
@@ -26,16 +27,21 @@
 			
 			</tr>
 				<td class="produtos">
-								<%= raw(produto.descricao[0,300])%>...<br /><br />
-								<h3><%= link_to 'Ler mais', produto%></h3>
+								<p class="produtos">
+										<%= raw(produto.descricao[0,300])%>...
+								<p>
+										<br /><br />
+								<h3 class="produtos">
+										<%= link_to 'Ler mais', produto%>
+								</h3>
 				</td>
 			</tr>
 				<td colspan="2"  class="produtos">
 				<% if can? :update, @produtos%>
-					<%= link_to 'Editar', edit_produto_path(produto) %>
+					<%= link_to image_tag('editar.png'), edit_produto_path(produto) %>
 				<% end %>
 				<% if can? :destroy, @produtos%>
-					<%= link_to 'Excluir', produto, :confirm => 'Tem certeza?', :method => :delete %></td>
+					<%= link_to image_tag('excluir.png'), produto, :confirm => 'Tem certeza?', :method => :delete %></td>
 					
 				<% end %>
 				
@@ -44,8 +50,10 @@
 		
 		<% end %>
 		<tr> 
-			<td class="produtospaginate">
-				<%= will_paginate @produtos %>
+			<td class="produtospaginate" colspan="2">
+				
+				<p><%= will_paginate(@produtos) %></p>
+				
 			</td>
 		</tr>
 	</table>

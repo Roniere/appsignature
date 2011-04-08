@@ -15,6 +15,8 @@ gem 'cancan'
 
 gem "will_paginate", "~> 3.0.pre2"
 
+gem 'will_paginate_renderers'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

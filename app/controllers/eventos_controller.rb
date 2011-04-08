@@ -1,4 +1,5 @@
 class EventosController < ApplicationController
+	layout 'principal'
   # GET /eventos
   # GET /eventos.xml
   load_and_authorize_resource :only => [:new, :edit, :update, :destroy]

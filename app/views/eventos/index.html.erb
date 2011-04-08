@@ -1,10 +1,10 @@
-<h1 class="eventos">Eventos Signature</h1>
+<h1 class="titulo">Eventos Signature</h1>
 <% if can? :new, @eventos%>
 	<h2>
-		<%= link_to 'Novo Evento', new_evento_path %>
+		<%= link_to image_tag('novo.png'), new_evento_path %>
 	</h2>
 <% end %>
-	<table border="2" width="100%" class="eventos">
+	<table border="0" width="100%" class="eventos">
 	
 	<% @eventos.each do |evento| %>
 	
@@ -32,10 +32,10 @@
 		<tr>
 			<td colspan="3">
 				<% if can? :update, @eventos%>
-					<%= link_to 'Editar', edit_evento_path(evento) %>
+					<%= link_to image_tag('editar.png'), edit_evento_path(evento) %>
 				<% end %>
 				<% if can? :destroy, @eventos%>
-					<%= link_to 'Excluir', evento, :confirm => 'Deseja Realmente Excluir?', :method => :delete %></td>
+					<%= link_to image_tag('excluir.png'), evento, :confirm => 'Deseja Realmente Excluir?', :method => :delete %></td>
 				<% end %>
 		</tr>
 	<% end %>
